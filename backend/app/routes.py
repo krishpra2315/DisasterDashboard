@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template, jsonify
 from pymongo import MongoClient
-from app.config import Config
+from backend.app.config import Config
 
 main = Blueprint('main', __name__)
 

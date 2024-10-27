@@ -1,5 +1,5 @@
 from flask import Flask
-from app.routes import main
+from backend.app.routes import main
 from flask_cors import CORS
 
 def create_app():
