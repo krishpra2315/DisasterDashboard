@@ -1,6 +1,8 @@
 from flask import Blueprint, render_template, jsonify
-from pymongo import MongoClient
-from backend.app.config import Config
+import csv
+import os
+
+from flask_cors import cross_origin
 
 main = Blueprint('main', __name__)
 
@@ -10,19 +12,22 @@ def index():
     return render_template('index.html')
 
 @main.route('/weather', strict_slashes=False, methods=['GET', 'POST'])
+@cross_origin()
 def weather():
-    try:
-        client = MongoClient(Config.MONGO_URI)
-        db = client['weather_db']
-        weather_collection = db['weather']
-        print("Connected to MongoDB")
-        weather_data = list(weather_collection.find())
-        for data in weather_data:
-            data['_id'] = str(data['_id'])  # Convert ObjectId to string for JSON serialization
-        return jsonify(weather_data)
-    except Exception as e:
-        print(e)
+    # Open the CSV file
+    cwd = os.getcwd()
+    with open('/Users/krishprasad/Desktop/Projects/DisasterDashboard/backend/storms.csv', mode='r') as file:
+        # Create a CSV reader
+        reader = csv.reader(file)
+        data = {}
+        # Skip the header row
+        header = next(reader)
 
-    return "<p>i suck</p>"
+        # Read each row in the CSV file
+        for row in reader:
+            if row[1] not in data:
+                data[row[1]] = [dict(zip(header, row))]
+            else:
+                data[row[1]].append(dict(zip(header, row)))
 
-    #return render_template('weather.html', weathers=list(weather_collection.find()))
+    return jsonify(data)
