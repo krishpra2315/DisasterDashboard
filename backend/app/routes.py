@@ -25,9 +25,10 @@ def weather():
 
         # Read each row in the CSV file
         for row in reader:
-            if row[1] not in data:
-                data[row[1]] = [dict(zip(header, row))]
+            title = row[1] + " (" + row[2] + ")"
+            if title not in data:
+                data[title] = [dict(zip(header, row))]
             else:
-                data[row[1]].append(dict(zip(header, row)))
+                data[title].append(dict(zip(header, row)))
 
     return jsonify(data)
