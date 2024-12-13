@@ -5,15 +5,11 @@ import {Feature, Map, View} from 'ol';
 import TileLayer from 'ol/layer/Tile';
 import OSM from 'ol/source/OSM';
 import 'ol/ol.css';
-import {Point} from "ol/geom.js";
-import {fromLonLat, transform} from "ol/proj.js";
 import {Fill, Stroke, Style} from "ol/style.js";
-import CircleStyle from "ol/style/Circle.js";
 import VectorSource from "ol/source/Vector.js";
 import VectorLayer from "ol/layer/Vector.js";
 import { Circle as CircleGeometry } from 'ol/geom';
 import { get as getProjection } from 'ol/proj';
-import {indexOf} from "leaflet/src/core/Util.js";
 
 function Hurricane() {
     const { name } = useParams()
@@ -32,7 +28,6 @@ function Hurricane() {
             const response = await fetch(`http://127.0.0.1:5000/weather`)
             const d = await response.json()
             setData(d[name])
-            setCurrent(data[0])
         } catch (error) {
             console.error('Error fetching data:', error)
         } finally {
@@ -103,7 +98,7 @@ function Hurricane() {
             target: "map",
             layers: [osmLayer, vectorLayer],
             view: new View({
-                center: [current ? parseInt(data[0]["long"]) : 0, current ? parseInt(data[0]["lat"]) : 0],
+                center: [data[0] ? parseInt(data[0]["long"]) : 0, data[0] ? parseInt(data[0]["lat"]) : 0],
                 zoom: 5,
                 projection: projection
             }),
