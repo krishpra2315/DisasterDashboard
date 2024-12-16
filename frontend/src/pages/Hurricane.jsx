@@ -1,5 +1,5 @@
 import { useParams } from 'react-router-dom'
-import {useEffect, useState} from "react";
+import {useEffect, useState, useRef} from "react";
 import './Hurricane.css';
 import {Feature, Map, View} from 'ol';
 import TileLayer from 'ol/layer/Tile';
@@ -10,8 +10,13 @@ import VectorSource from "ol/source/Vector.js";
 import VectorLayer from "ol/layer/Vector.js";
 import { Circle as CircleGeometry } from 'ol/geom';
 import { get as getProjection } from 'ol/proj';
+import {GoogleGenerativeAI} from "@google/generative-ai";
+import MarkdownView from "react-showdown";
+import { Link } from 'react-router-dom';
 
 function Hurricane() {
+    const geminiApiKey = import.meta.env.VITE_GEMINI_API_KEY;
+
     const { name } = useParams()
     const [data, setData] = useState(null)
     const [current, setCurrent] = useState(null)
@@ -21,6 +26,8 @@ function Hurricane() {
         content: '',
         position: [0, 0],
     });
+    const [aiResponse, setAiResponse] = useState(''); // State to store AI response
+    const [isTabVisible, setIsTabVisible] = useState(false); // State to manage tab visibility
 
     useEffect(() => {
         const fetchData = async () => {
@@ -28,6 +35,14 @@ function Hurricane() {
             const response = await fetch(`http://127.0.0.1:5000/weather`)
             const d = await response.json()
             setData(d[name])
+
+            const genAI = new GoogleGenerativeAI(`${geminiApiKey}`);
+            const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+
+            const prompt = `Give me a short summary about weather event ${name}`;
+
+            const result = await model.generateContent(prompt);
+            setAiResponse(result.response.text());
         } catch (error) {
             console.error('Error fetching data:', error)
         } finally {
@@ -158,28 +173,48 @@ function Hurricane() {
 
     }, [data]);
 
+    // Function to toggle the visibility of the tab
+    const toggleTabVisibility = () => {
+        setIsTabVisible(prev => !prev);
+    };
+
     return (
         <>
             <div className="title-bar">
+                <Link to="/hurricanes" className="title" style={{textDecoration: 'none'}}>
+                    Weather Events:
+                </Link>
                 <h1 className="title">{name}</h1>
             </div>
             {tooltip.visible && (
                 <div
-                  style={{
-                    position: 'absolute',
-                    background: 'white',
-                    padding: '5px',
-                    border: '1px solid black',
-                    zIndex: 1000,
-                    pointerEvents: 'none',
-                    left: tooltip.position[0] + 10, // Slight offset for visibility
-                    top: tooltip.position[1] + 10,
-                  }}
+                    style={{
+                        position: 'absolute',
+                        background: 'white',
+                        padding: '5px',
+                        border: '1px solid black',
+                        zIndex: 1000,
+                        pointerEvents: 'none',
+                        left: tooltip.position[0] + 10, // Slight offset for visibility
+                        top: tooltip.position[1] + 10,
+                    }}
                 >
-                  <div dangerouslySetInnerHTML={{ __html: tooltip.content }} />
+                    <div dangerouslySetInnerHTML={{__html: tooltip.content}}/>
                 </div>
             )}
-            <div style={{height: '100%', width: '100%'}} id="map" className="map-container"/>
+            <div style={{height: '90%', width: '100%'}} id="map" className="map-container"/>
+
+            <div>
+                <button onClick={toggleTabVisibility} style={isTabVisible ? {right: '330px'} : {}} className="toggle-button">
+                    {isTabVisible ? 'x' : '<'}
+                </button>
+                {isTabVisible && (
+                    <div className="overlay-tab">
+                        <h2>About</h2><br></br>
+                        <MarkdownView markdown={aiResponse} />
+                    </div>
+                )}
+            </div>
         </>
     )
 }
