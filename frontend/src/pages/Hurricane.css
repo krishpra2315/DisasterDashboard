@@ -14,47 +14,16 @@ html, body {
 .title-bar {
     background-color: #203E62;
     height: 100px;
+    display: flex;
+    align-items: center;
 }
 
-.title {
+.hurricane-title {
     color: white;
-    font-size: 48px;
+    font-size: 55px;
     font-weight: 500;
     font-style: italic;
-    padding: 1.2%;
-}
-
-.dropdown-container {
-    display: flex;
-    flex-direction: column;
-    max-width: 300px;
-    margin: 20px;
-    font-family: Arial, sans-serif;
-}
-
-.dropdown-container label {
-    margin-bottom: 8px;
-    font-size: 14px;
-    color: #333;
-}
-
-.dropdown {
-    width: 100%;
-    padding: 10px 16px;
-    font-size: 16px;
-    color: #333;
-    border: 2px solid #ccc;
-    border-radius: 8px;
-    background-color: #fff;
-    appearance: none; /* Removes default dropdown arrow styling */
-    -webkit-appearance: none; /* Safari fix */
-    -moz-appearance: none; /* Firefox fix */
-    background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23999999'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
-    background-repeat: no-repeat;
-    background-position: right 12px center;
-    background-size: 16px;
-    cursor: pointer;
-    transition: all 0.3s ease;
+    padding: 0.5%;
 }
 
 #tooltip {
@@ -65,7 +34,39 @@ html, body {
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
 }
 
-/*#map {
-    height: 180px;
-}*/
+.overlay-tab {
+    position: fixed;
+    right: 0;
+    top: 0;
+    height: 100vh;
+    width: 17%;
+    background-color: #333;
+    color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    overflow-y: auto;
+    padding: 10px;
+}
+
+.toggle-button {
+    position: absolute;
+    right: 10px;
+    top: 20px;
+    z-index: 1001;
+    background-color: white;
+    color: #203E62;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: large;
+}
+
+.toggle-button:hover {
+    background-color: #f0f0f0;
+    color: #203E62;
+}
 

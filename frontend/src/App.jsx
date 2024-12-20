@@ -1,6 +1,7 @@
 import './App.css'
+import Hurricanes from './pages/./Hurricanes.jsx';
+import Hurricane from './pages/Hurricane.jsx';
 import Home from './pages/Home.jsx';
-import Hurricane from './pages/Hurricane.jsx'
 
 import {
   createBrowserRouter,
@@ -11,6 +12,10 @@ const router = createBrowserRouter([
     {
         path: "/",
         element: <Home />
+    },
+    {
+        path: "/hurricanes",
+        element: <Hurricanes />
     },
     {
         path: "/hurricanes/:name",
