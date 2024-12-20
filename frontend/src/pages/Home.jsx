@@ -13,11 +13,11 @@ function Home() {
         const fetchNews = async () => {
             try {
                 const response = await fetch(
-                    `https://newsapi.org/v2/top-headlines?q=natural_disaster&language=en&from=2024-11-18&apiKey=${newsAPIKey}`
+                    `https://newsapi.org/v2/everything?q=storms&language=en&pageSize=10&apiKey=${newsAPIKey}`
                 );
                 const data = await response.json();
-                console.log(data.totalResults);
-                setNewsData(data);
+                console.log("data: ", data.articles);
+                setNewsData(data.articles);
             } catch (error) {
                 console.error("Error fetching news:", error);
             }
@@ -38,14 +38,23 @@ function Home() {
                 <h1 className="title">Disaster Dashboard</h1>
             </div>
             <div className="hurr-container">
-                <div className="background-image" />
+                <div className="background-image"/>
                 <div className="hurricane-box">
-                    <p className="description">Click below to learn more about previous hurricanes, their paths, and their impacts.</p>
+                    <p className="description">Click below to learn more about previous hurricanes, their paths, and
+                        their impacts.</p>
                     <button className="button" onClick={() => handleClick("hurricanes")}>Hurricanes</button>
                 </div>
             </div>
+            <h2 className="news-header">Recent News</h2>
             <div className="news-container">
-                <span><pre>{JSON.stringify(newsData)}</pre></span>
+                {newsData && newsData.map((item, index) => (
+                    <div className="news-item" key={index}>
+                        {item.urlToImage && <img src={item.urlToImage} alt={item.title} className="news-image"/>}
+                        <h2 className="news-title">{item.title}</h2>
+                        <p className="news-description">{item.description}</p>
+                        <a href={item.url} target="_blank" rel="noopener noreferrer" className="news-link">Read more</a>
+                    </div>
+                ))}
             </div>
         </div>
     )

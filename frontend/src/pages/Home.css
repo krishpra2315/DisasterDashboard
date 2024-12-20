@@ -1,53 +1,37 @@
-/* Full-screen title section */
 .title-container {
-    height: 100vh; /* Full viewport height */
+    height: 100vh;
     display: flex;
-    align-items: center; /* Center vertically */
-    justify-content: center; /* Center horizontally */
+    align-items: center;
+    justify-content: center;
     background-image: url('/Users/krishprasad/Desktop/Projects/DisasterDashboard/frontend/src/assets/dd_background.jpg');
-    background-size: 100vw 100vh; /* Cover the entire screen */
-    background-position: center; /* Center the image */
-    background-repeat: no-repeat; /* Prevent repeating */
+    background-size: 100vw 100vh;
+    background-position: center;
+    background-repeat: no-repeat;
     animation: fade-out linear;
     animation-timeline: view;
-    /*animation-range: exit - 200px;*/
 }
 
 @keyframes fade-out {
     to {opacity: 0}
 }
 
-/*.scroll-watcher {
-    position: fixed;
-    height: 10px;
-    top: 0;
-    z-index: 1000;
-    background-color: lime;
-    width: 100%;
-    scale: 0 1;
-    animation: scroll-watcher linear;
-    animation-timeline: scroll();
-}*/
-
-/* Remove the background image from the body */
 body {
-    position: relative; /* Set position to relative for the pseudo-element */
+    position: relative;
 }
 
-/* Pseudo-element for background image */
 .background-image {
-    content: ""; /* Required for pseudo-element */
-    position: absolute; /* Position it absolutely */
-    top: 0; /* Align to the top */
-    left: 0; /* Align to the left */
-    right: 0; /* Stretch to the right */
-    bottom: 0; /* Stretch to the bottom */
-    background-image: url('/Users/krishprasad/Desktop/Projects/DisasterDashboard/frontend/src/assets/hurr_background.jpeg'); /* Replace with the actual path to your image */
-    background-size: cover; /* Cover the entire screen */
-    background-position: center; /* Center the image */
-    background-repeat: no-repeat; /* Prevent repeating */
-    opacity: 0.7; /* Set the opacity to make it slightly transparent */
-    z-index: -1; /* Send it behind other content */
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('/Users/krishprasad/Desktop/Projects/DisasterDashboard/frontend/src/assets/hurr_background.jpeg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.7;
+    z-index: -1;
 }
 
 .home-container {
@@ -55,60 +39,122 @@ body {
     height: auto;
 }
 
-/* Container for overlaying elements */
 .hurr-container {
     position: relative;
     display: flex;
     flex-direction: column;
-    align-items: center; /* Center elements horizontally */
-    justify-content: flex-start; /* Align items to the start */
-    height: 60vh; /* Allow height to adjust based on content */
-    color: white; /* Change text color to white for better contrast */
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7); /* Add shadow for better readability */
-    padding: 20px; /* Add padding for spacing */
+    align-items: center;
+    justify-content: flex-start;
+    height: 60vh;
+    color: white;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+    padding: 20px;
 }
 
-/* Styling for the main title */
 .title {
-    font-size: 80px; /* Increased font size */
-    font-weight: bold; /* Bold text */
-    text-align: center; /* Centered text */
-    margin: 0; /* Remove margin */
-    color: white; /* Text color */
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7); /* Add shadow for better readability */
+    font-size: 80px;
+    font-weight: bold;
+    text-align: center;
+    margin: 0;
+    color: white;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
 }
 
-/* New styling for the hurricane box */
 .hurricane-box {
-    background-color: rgba(0, 0, 0, 0.7); /* Opaque black background */
-    padding: 20px; /* Padding for spacing */
-    border-radius: 10px; /* Rounded corners */
-    text-align: center; /* Center text */
-    margin: 20px 0; /* Margin for spacing */
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    margin: 20px 0;
 }
 
-/* Styling for the description */
 .description {
-    font-size: 16px; /* Font size for description */
-    margin-bottom: 10px; /* Margin below description */
-    color: white; /* White text for contrast */
+    font-size: 16px;
+    margin-bottom: 10px;
+    color: white;
 }
 
-/* Styling for the button */
 .button {
-    background-color: rgba(40, 167, 69, 0.8); /* Semi-transparent green background */
-    color: white; /* White text */
-    border: none; /* No border */
-    border-radius: 5px; /* Rounded corners */
-    padding: 15px 30px; /* Increased padding for size */
-    font-size: 20px; /* Increased font size */
-    cursor: pointer; /* Pointer cursor on hover */
-    transition: background-color 0.3s; /* Smooth transition */
-    display: block; /* Block display for centering */
-    margin: 0 auto; /* Center the button */
+    background-color: rgba(40, 167, 69, 0.8);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 15px 30px;
+    font-size: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    display: block;
+    margin: 0 auto;
 }
 
-/* Button hover effect */
 .button:hover {
-    background-color: rgba(33, 136, 56, 0.9); /* Darker green on hover */
+    background-color: rgba(33, 136, 56, 0.9);
+}
+
+.news-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: left;
+    padding: 20px;
+}
+
+.news-header {
+    font-size: 48px;
+    font-weight: bold;
+    margin: 20px 0;
+    color: #333;
+    text-align: center;
+}
+
+.news-item {
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    margin: 15px;
+    padding: 15px;
+    width: calc(33.33% - 30px);
+    transition: transform 0.3s;
+    box-sizing: border-box;
+}
+
+.news-image {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+.news-title {
+    font-size: 20px;
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+.news-description {
+    font-size: 16px;
+    margin: 10px 0;
+}
+
+.news-link {
+    display: inline-block;
+    margin-top: 10px;
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.news-item:hover {
+    transform: scale(1.02);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 768px) {
+    .news-item {
+        width: calc(50% - 20px);
+    }
+}
+
+@media (max-width: 480px) {
+    .news-item {
+        width: 100%;
+    }
 }
