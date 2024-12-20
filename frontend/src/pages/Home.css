@@ -1,0 +1,114 @@
+/* Full-screen title section */
+.title-container {
+    height: 100vh; /* Full viewport height */
+    display: flex;
+    align-items: center; /* Center vertically */
+    justify-content: center; /* Center horizontally */
+    background-image: url('/Users/krishprasad/Desktop/Projects/DisasterDashboard/frontend/src/assets/dd_background.jpg');
+    background-size: 100vw 100vh; /* Cover the entire screen */
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Prevent repeating */
+    animation: fade-out linear;
+    animation-timeline: view;
+    /*animation-range: exit - 200px;*/
+}
+
+@keyframes fade-out {
+    to {opacity: 0}
+}
+
+/*.scroll-watcher {
+    position: fixed;
+    height: 10px;
+    top: 0;
+    z-index: 1000;
+    background-color: lime;
+    width: 100%;
+    scale: 0 1;
+    animation: scroll-watcher linear;
+    animation-timeline: scroll();
+}*/
+
+/* Remove the background image from the body */
+body {
+    position: relative; /* Set position to relative for the pseudo-element */
+}
+
+/* Pseudo-element for background image */
+.background-image {
+    content: ""; /* Required for pseudo-element */
+    position: absolute; /* Position it absolutely */
+    top: 0; /* Align to the top */
+    left: 0; /* Align to the left */
+    right: 0; /* Stretch to the right */
+    bottom: 0; /* Stretch to the bottom */
+    background-image: url('/Users/krishprasad/Desktop/Projects/DisasterDashboard/frontend/src/assets/hurr_background.jpeg'); /* Replace with the actual path to your image */
+    background-size: cover; /* Cover the entire screen */
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Prevent repeating */
+    opacity: 0.7; /* Set the opacity to make it slightly transparent */
+    z-index: -1; /* Send it behind other content */
+}
+
+.home-container {
+    overflow-y: scroll;
+    height: auto;
+}
+
+/* Container for overlaying elements */
+.hurr-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center elements horizontally */
+    justify-content: flex-start; /* Align items to the start */
+    height: 60vh; /* Allow height to adjust based on content */
+    color: white; /* Change text color to white for better contrast */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7); /* Add shadow for better readability */
+    padding: 20px; /* Add padding for spacing */
+}
+
+/* Styling for the main title */
+.title {
+    font-size: 80px; /* Increased font size */
+    font-weight: bold; /* Bold text */
+    text-align: center; /* Centered text */
+    margin: 0; /* Remove margin */
+    color: white; /* Text color */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7); /* Add shadow for better readability */
+}
+
+/* New styling for the hurricane box */
+.hurricane-box {
+    background-color: rgba(0, 0, 0, 0.7); /* Opaque black background */
+    padding: 20px; /* Padding for spacing */
+    border-radius: 10px; /* Rounded corners */
+    text-align: center; /* Center text */
+    margin: 20px 0; /* Margin for spacing */
+}
+
+/* Styling for the description */
+.description {
+    font-size: 16px; /* Font size for description */
+    margin-bottom: 10px; /* Margin below description */
+    color: white; /* White text for contrast */
+}
+
+/* Styling for the button */
+.button {
+    background-color: rgba(40, 167, 69, 0.8); /* Semi-transparent green background */
+    color: white; /* White text */
+    border: none; /* No border */
+    border-radius: 5px; /* Rounded corners */
+    padding: 15px 30px; /* Increased padding for size */
+    font-size: 20px; /* Increased font size */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s; /* Smooth transition */
+    display: block; /* Block display for centering */
+    margin: 0 auto; /* Center the button */
+}
+
+/* Button hover effect */
+.button:hover {
+    background-color: rgba(33, 136, 56, 0.9); /* Darker green on hover */
+}

@@ -181,10 +181,10 @@ function Hurricane() {
     return (
         <>
             <div className="title-bar">
-                <Link to="/hurricanes" className="title" style={{textDecoration: 'none'}}>
+                <Link to="/hurricanes" className="hurricane-title" style={{textDecoration: 'none'}}>
                     Weather Events:
                 </Link>
-                <h1 className="title">{name}</h1>
+                <h1 className="hurricane-title">{name}</h1>
             </div>
             {tooltip.visible && (
                 <div
