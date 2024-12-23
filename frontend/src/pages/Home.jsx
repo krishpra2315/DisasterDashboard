@@ -13,10 +13,9 @@ function Home() {
         const fetchNews = async () => {
             try {
                 const response = await fetch(
-                    `https://newsapi.org/v2/everything?q=storms&language=en&pageSize=10&apiKey=${newsAPIKey}`
+                    `https://newsapi.org/v2/everything?q="natural disaster"&language=en&pageSize=9&apiKey=${newsAPIKey}`
                 );
                 const data = await response.json();
-                console.log("data: ", data.articles);
                 setNewsData(data.articles);
             } catch (error) {
                 console.error("Error fetching news:", error);
