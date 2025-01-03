@@ -1,6 +1,7 @@
 import {useEffect, useState} from "react";
 import './Hurricanes.css'
 import { useNavigate } from 'react-router-dom';
+import logo from '../assets/dd_logo.png';
 
 function Hurricanes() {
     const [data, setData] = useState(null)
@@ -35,7 +36,7 @@ function Hurricanes() {
     return (
         <>
             <div className="header" onClick={() => navigate('/')}>
-                <img src="/Users/krishprasad/Desktop/Projects/DisasterDashboard/frontend/src/assets/dd_logo.jpeg" 
+                <img src={logo}
                 alt="Logo" style={{ cursor: 'pointer', width: '100px' }} />
                 <h1>Hurricanes & Tropical Storms</h1>
             </div>
