@@ -8,7 +8,7 @@ function Hurricanes() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch(`http://127.0.0.1:5000/weather`)
+                const response = await fetch(`/api/weather`)
                 const d = await response.json()
                 setData(d)
             } catch (error) {
@@ -34,16 +34,19 @@ function Hurricanes() {
 
     return (
         <>
+            <div className="header" onClick={() => navigate('/')}>
+                <img src="/Users/krishprasad/Desktop/Projects/DisasterDashboard/frontend/src/assets/dd_logo.jpeg" 
+                alt="Logo" style={{ cursor: 'pointer', width: '100px' }} />
+                <h1>Hurricanes & Tropical Storms</h1>
+            </div>
             <div>
-                <h1>Hurricanes/Tropical Storms</h1>
                 {hurricanes.map((hurricane, index) => {
-                        return (
-                            <div key={index} onClick={() => handleClick(hurricane)} className="hurricane-nav">
-                                <p>{hurricane}</p>
-                            </div>
-                        )
-                    })
-                }
+                    return (
+                        <div key={index} onClick={() => handleClick(hurricane)} className="hurricane-nav">
+                            <p>{hurricane}</p>
+                        </div>
+                    )
+                })}
             </div>
         </>
     )

@@ -1,17 +1,20 @@
-from flask import Blueprint, render_template, jsonify
+from flask import Blueprint, render_template, jsonify, send_from_directory
 import csv
 import os
 
 from flask_cors import cross_origin
 
-main = Blueprint('main', __name__)
+bp = Blueprint('main', __name__)
 
+@bp.route("/")
+def serve():
+    return send_from_directory('static/dist', "index.html")
 
-@main.route('/', strict_slashes=False, methods=['GET', 'POST'])
-def index():
-    return render_template('index.html')
+@bp.route('/static/<path:filename>')
+def serve_static(filename):
+    return send_from_directory('static/dist', filename)
 
-@main.route('/weather', strict_slashes=False, methods=['GET', 'POST'])
+@bp.route('/api/weather', strict_slashes=False, methods=['GET', 'POST'])
 @cross_origin()
 def weather():
     # Open the CSV file

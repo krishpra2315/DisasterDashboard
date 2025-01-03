@@ -32,7 +32,7 @@ function Hurricane() {
     useEffect(() => {
         const fetchData = async () => {
         try {
-            const response = await fetch(`http://127.0.0.1:5000/weather`)
+            const response = await fetch(`/api/weather`)
             const d = await response.json()
             setData(d[name])
 

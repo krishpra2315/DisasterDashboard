@@ -1,6 +1,19 @@
+.header {
+    font-size: 2.5em; /* Larger header */
+    text-align: center;
+    margin-bottom: 20px; /* Space below the header */
+}
+
 .hurricane-nav {
     min-height: 100px;
     min-width: 400px;
     background-color: #535bf2;
     text-align: center;
+    margin: 10px 0; /* Padding between hurricane divs */
+    border-radius: 8px; /* Rounded corners */
+    transition: background-color 0.3s; /* Smooth hover effect */
+}
+
+.hurricane-nav:hover {
+    background-color: #4a4fd2; /* Darker shade on hover */
 }
