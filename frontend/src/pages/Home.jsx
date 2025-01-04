@@ -13,7 +13,7 @@ function Home() {
         const fetchNews = async () => {
             try {
                 const response = await fetch(
-                    `https://api.currentsapi.services/v1/latest-news?apiKey=${newsAPIKey}&keywords="natural disaster"&language=en&page_size=9`
+                    `https://api.currentsapi.services/v1/latest-news?apiKey=${newsAPIKey}&keywords="hurricane"&language=en&page_size=9`
                 );
                 const data = await response.json();
                 setNewsData(data.news);
@@ -49,7 +49,7 @@ function Home() {
             <div className="news-container">
                 {newsData && newsData.map((item, index) => (
                     <div className="news-item" key={index}>
-                        {item.urlToImage && <img src={item.urlToImage} alt={item.title} className="news-image"/>}
+                        {item.image && <img src={item.image} alt={item.title} className="news-image"/>}
                         <h2 className="news-title">{item.title}</h2>
                         <p className="news-description">{item.description}</p>
                         <a href={item.url} target="_blank" rel="noopener noreferrer" className="news-link">Read more</a>
