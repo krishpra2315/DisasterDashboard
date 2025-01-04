@@ -8,11 +8,16 @@ bp = Blueprint('main', __name__)
 
 @bp.route("/")
 def serve():
-    return send_from_directory('app/static/dist', "index.html")
+    # Using absolute path for index.html
+    dist_folder = os.path.join(os.getcwd(), 'backend', 'app', 'static', 'dist')
+    print(dist_folder)
+    return send_from_directory(dist_folder, "index.html")
 
 @bp.route('/static/<path:filename>')
 def serve_static(filename):
-    return send_from_directory('app/static/dist', filename)
+    # Using absolute path for static files
+    dist_folder = os.path.join(os.getcwd(), 'backend', 'app', 'static', 'dist')
+    return send_from_directory(dist_folder, filename)
 
 @bp.route('/api/weather', strict_slashes=False, methods=['GET', 'POST'])
 @cross_origin()
