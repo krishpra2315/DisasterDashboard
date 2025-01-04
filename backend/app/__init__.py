@@ -2,7 +2,7 @@ from flask import Flask
 import os
 
 def create_app():
-    project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
+    project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..', '..'))
 
     print(f"project root: {project_root}")
     # Set the correct path to the dist folder
