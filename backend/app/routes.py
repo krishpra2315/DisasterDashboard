@@ -24,7 +24,7 @@ def serve_static(filename):
 def weather():
     # Open the CSV file
     cwd = os.getcwd()
-    with open('/Users/krishprasad/Desktop/Projects/DisasterDashboard/backend/storms.csv', mode='r') as file:
+    with open('/app/backend/storms.csv', mode='r') as file:
         # Create a CSV reader
         reader = csv.reader(file)
         data = {}
