@@ -119,15 +119,6 @@ function Hurricane() {
             }),
         });
 
-        /*map.on('singleclick', (evt) => {
-            const features = map.getFeaturesAtPixel(evt.pixel); // Get features at the clicked pixel
-            if (features.length > 0) {
-              const clickedFeature = features[0];
-              const featureId = clickedFeature.getId(); // Get the feature's ID
-              setCurrent(data[parseInt(featureId)]);
-            }
-        });*/
-
         const hoverStyle = new Style({
             fill: new Fill({
               color: 'rgba(0, 0, 255, 0.3)', // Semi-transparent yellow
