@@ -70,7 +70,7 @@ function Hurricanes() {
                     onChange={(e) => setSearchTerm(e.target.value)}
                 />
                 <select onChange={handleYearChange} value="">
-                    <option value="">Select a year</option>
+                    <option value="">Filter years</option>
                     {uniqueYears.map((year, index) => (
                         <option key={index} value={year}>{year}</option>
                     ))}

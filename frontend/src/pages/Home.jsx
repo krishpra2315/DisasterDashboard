@@ -39,8 +39,9 @@ function Home() {
             <div className="hurr-container">
                 <div className="background-image"/>
                 <div className="hurricane-box">
-                    <p className="description">Click below to learn more about previous hurricanes, their paths, and
-                        their impacts.</p>
+                    <p className="description">
+                        Click below to access our large database of hurricanes where you can find information about their paths and the impact they had on surrounding areas.
+                    </p>
                     <button className="button" onClick={() => handleClick("hurricanes")}>Hurricanes</button>
                 </div>
             </div>

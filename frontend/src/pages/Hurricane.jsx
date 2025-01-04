@@ -159,8 +159,7 @@ function Hurricane() {
                     content: `
                         <p>Latitude: ${props.latitude}</p>
                         <p>Longitude: ${props.longitude}</p>
-                        <p>Pressure: ${props.pressure}</p>
-                        <p>Wind: ${props.wind}</p>
+                        <p>Wind: ${props.wind} mph</p>
                     `,
                     position: evt.pixel,
                 });
@@ -182,7 +181,7 @@ function Hurricane() {
         <>
             <div className="title-bar">
                 <Link to="/hurricanes" className="hurricane-title" style={{textDecoration: 'none'}}>
-                    Weather Events:
+                    Hurricanes & Tropical Storms:
                 </Link>
                 <h1 className="hurricane-title">{name}</h1>
             </div>
