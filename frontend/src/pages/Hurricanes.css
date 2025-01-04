@@ -5,15 +5,67 @@
 }
 
 .hurricane-nav {
-    min-height: 100px;
-    min-width: 400px;
-    background-color: #535bf2;
+    flex: 1 1 30%; /* Allow the modules to grow and shrink, with a base width of 30% */
+    max-width: 32%; /* Set maximum width to 30% */
+    min-height: 100px; /* Minimum height for the modules */
+    background-color: #ffffff; /* Changed background to white */
     text-align: center;
-    margin: 10px 0; /* Padding between hurricane divs */
-    border-radius: 8px; /* Rounded corners */
-    transition: background-color 0.3s; /* Smooth hover effect */
+    margin: 10px; /* Adjusted margin to allow for spacing between modules */
+    border-radius: 12px; /* Increased border radius for a softer look */
+    transition: background-color 0.3s, transform 0.3s; /* Added transform for pop effect */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Added shadow for depth */
+    display: flex; /* Use flexbox for vertical centering */
+    align-items: center; /* Center text vertically */
+    justify-content: center; /* Center text horizontally */
+    font-size: 1.5em; /* Increased font size */
 }
 
 .hurricane-nav:hover {
-    background-color: #4a4fd2; /* Darker shade on hover */
+    background-color: #f0f0f0; /* Light gray on hover for better contrast */
+    transform: translateY(-2px); /* Slightly lift the element on hover */
+}
+
+.input-container {
+    display: flex; /* Use flexbox for layout */
+    justify-content: space-between; /* Space out the inputs evenly */
+    margin: 10px 0; /* Add margin for spacing above and below */
+}
+
+input[type="text"], select {
+    font-size: 1.5em; /* Increase font size for better readability */
+    padding: 10px; /* Add padding for a more comfortable input area */
+    border: 2px solid #ccc; /* Light gray border */
+    border-radius: 8px; /* Rounded corners */
+    transition: border-color 0.3s; /* Smooth transition for border color */
+    width: 30%; /* Set width to 30% for 1/3 of the page */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+input[type="text"]:focus, select:focus {
+    border-color: #007bff; /* Change border color on focus */
+    outline: none; /* Remove default outline */
+}
+
+.selected-years {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 10px; /* Space above the selected years */
+}
+
+.selected-year {
+    background-color: #6de9e3; /* Blue background */
+    color: white; /* White text */
+    border-radius: 5px; /* Rounded corners */
+    padding: 5px 10px; /* Padding for better appearance */
+    margin-right: 5px; /* Space between selected years */
+    display: flex; /* Flexbox for alignment */
+    align-items: center; /* Center items vertically */
+}
+
+.selected-year button {
+    background: none; /* No background */
+    border: none; /* No border */
+    color: black; /* White text */
+    margin-left: 5px; /* Space between year and button */
+    cursor: pointer; /* Pointer cursor on hover */
 }
