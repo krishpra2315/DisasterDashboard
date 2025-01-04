@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, jsonify, send_from_directory
+from flask import Blueprint, jsonify, send_from_directory
 import csv
 import os
 
