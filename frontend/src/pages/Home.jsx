@@ -16,7 +16,7 @@ function Home() {
                     `https://api.currentsapi.services/v1/latest-news?apiKey=${newsAPIKey}&keywords="natural disaster"&language=en&page_size=9`
                 );
                 const data = await response.json();
-                setNewsData(data.articles);
+                setNewsData(data.news);
             } catch (error) {
                 console.error("Error fetching news:", error);
             }
