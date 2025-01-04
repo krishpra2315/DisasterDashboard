@@ -6,6 +6,8 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+    "move-dist": "rm -rf ../backend/app/static/dist/* && cp -r dist/* ../backend/app/static/dist",
+    "full-build": "npm run build && npm run move-dist",
     "lint": "eslint .",
     "preview": "vite preview"
   },
