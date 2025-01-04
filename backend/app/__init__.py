@@ -1,9 +1,10 @@
 from flask import Flask
+import os
 
 def create_app():
     app = Flask(
         __name__,
-        static_folder="static/dist",
+        static_folder=os.path.join(os.getcwd(), 'backend', 'app', 'static', 'dist'),  # Absolute path to dist
         static_url_path="",
     )
 
