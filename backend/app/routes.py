@@ -8,11 +8,11 @@ bp = Blueprint('main', __name__)
 
 @bp.route("/")
 def serve():
-    return send_from_directory('static/dist', "index.html")
+    return send_from_directory('backend/app/static/dist', "index.html")
 
 @bp.route('/static/<path:filename>')
 def serve_static(filename):
-    return send_from_directory('static/dist', filename)
+    return send_from_directory('backend/app/static/dist', filename)
 
 @bp.route('/api/weather', strict_slashes=False, methods=['GET', 'POST'])
 @cross_origin()
