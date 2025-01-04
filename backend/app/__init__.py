@@ -2,9 +2,14 @@ from flask import Flask
 import os
 
 def create_app():
+    project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
+
+    # Set the correct path to the dist folder
+    static_folder_path = os.path.join(project_root, 'backend', 'app', 'static', 'dist')
+
     app = Flask(
         __name__,
-        static_folder=os.path.join(os.getcwd(), 'static', 'dist'),  # Absolute path to dist
+        static_folder=static_folder_path,
         static_url_path="",
     )
 
