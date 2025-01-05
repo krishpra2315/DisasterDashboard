@@ -13,7 +13,7 @@ function Home() {
         const fetchNews = async () => {
             try {
                 const response = await fetch(
-                    `https://api.currentsapi.services/v1/latest-news?apiKey=${newsAPIKey}&keywords="storms"&language=en&page_size=9`
+                    `https://api.currentsapi.services/v1/latest-news?apiKey=${newsAPIKey}&keywords=storms&language=en&page_size=9`
                 );
                 const data = await response.json();
                 setNewsData(data.news);
