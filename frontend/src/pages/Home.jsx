@@ -46,7 +46,7 @@ function Home() {
                     <button className="button" onClick={() => handleClick("hurricanes")}>Hurricanes</button>
                 </div>
             </div>
-            <h2 className="news-header">Recent News</h2>
+            {/*<h2 className="news-header">Recent News</h2>
             <div className="news-container">
                 {newsData && newsData.map((item, index) => (
                     <div className="news-item" key={index}>
@@ -56,7 +56,7 @@ function Home() {
                         <a href={item.url} target="_blank" rel="noopener noreferrer" className="news-link">Read more</a>
                     </div>
                 ))}
-            </div>
+            </div>*/}
         </div>
     )
 }
