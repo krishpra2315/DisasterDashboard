@@ -8,13 +8,13 @@ function Home() {
     const [newsData, setNewsData] = useState(null);
 
     useEffect(() => {
-        const url = `https://api.currentsapi.services/v1/latest-news?apiKey=${newsAPIKey}&language=en`;
+        const url = `https://api.currentsapi.services/v1/latest-news?apiKey=${newsAPIKey}&language=en&limit=200`;
 
         fetch(url)
           .then((response) => response.json())
           .then((data) => {
             // Filter articles based on keywords
-            const keyword = "storms"; // Define the keyword you're searching for
+            const keyword = "hurricane"; // Define the keyword you're searching for
             const filteredArticles = data.news.filter((article) =>
               article.title.toLowerCase().includes(keyword.toLowerCase()) ||
               article.description.toLowerCase().includes(keyword.toLowerCase())
