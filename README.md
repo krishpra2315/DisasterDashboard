@@ -8,5 +8,5 @@ Find the completed project here: [https://disaster-dashboard-95e807368f33.heroku
 
 ## Future Work
 
-Add other disasters (tornados, earthquakes, etc.)
-Add login and user features (favorites, bookmarks, sharing)
+- [ ] Add other disasters (tornados, earthquakes, etc.)
+- [ ] Add login and user features (favorites, bookmarks, sharing)
