@@ -5,24 +5,25 @@ import './Home.css';
 
 function Home() {
     const newsAPIKey = import.meta.env.VITE_NEWS_API_KEY;
-
     const [newsData, setNewsData] = useState(null);
-    const location = useLocation();
 
     useEffect(() => {
-        const fetchNews = async () => {
-            try {
-                const response = await fetch(
-                    `https://api.currentsapi.services/v1/latest-news?apiKey=${newsAPIKey}&keywords=storms&language=en&page_size=9`
-                );
-                const data = await response.json();
-                setNewsData(data.news);
-            } catch (error) {
-                console.error("Error fetching news:", error);
-            }
-        };
+        const url = `https://api.currentsapi.services/v1/latest-news?apiKey=${newsAPIKey}&language=en`;
 
-        fetchNews();
+        fetch(url)
+          .then((response) => response.json())
+          .then((data) => {
+            // Filter articles based on keywords
+            const keyword = "storms"; // Define the keyword you're searching for
+            const filteredArticles = data.news.filter((article) =>
+              article.title.toLowerCase().includes(keyword.toLowerCase()) ||
+              article.description.toLowerCase().includes(keyword.toLowerCase())
+            );
+
+            setNewsData(filteredArticles);
+          })
+          .catch((error) => console.error("Error fetching news:", error));
+
     }, [])
 
     const navigate = useNavigate();
